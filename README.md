@@ -31,8 +31,6 @@ git commit -m "blablabla"
 git push  
 ```
 
-**Note: App is automatically deployed in the background on Bluemix Platform: https://tuc-hackbay.eu-gb.mybluemix.net/**
-
 Retrieve list of online available commits/updates.
 ```
 git fetch  
