@@ -1,0 +1,6 @@
+launchConfigurations/
+node_modules
+npm-debug.log
+*.DS_Store
+
+*.lock
