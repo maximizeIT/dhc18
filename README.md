@@ -10,6 +10,11 @@ Navigate to directory:
 cd dhc18
 ```
 
+## Live deploy on Heroku App Platform
+```
+https://dhc18.herokuapp.com/
+```
+
 ## Important git commands
 1) Check local changes.
 ```
