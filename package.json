@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/maximizeIT/dhc18/issues"
   },
-  "homepage": "https://github.com/maximizeIT/dhc18#readme"
+  "homepage": "https://github.com/maximizeIT/dhc18#readme",
+  "dependencies": {
+    "npm": "^5.7.1"
+  }
 }
