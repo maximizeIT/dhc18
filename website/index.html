@@ -14,7 +14,167 @@
 
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <link rel="stylesheet" href="css/demo-styles.css" />
+
+    <script>
+    $( function() {
+      var results = [
+        {
+          value: "accident-emergency",
+          label: "Accident and emergency (A&E)",
+          desc: " Also called Casualty Department, where you're likely to be taken if you have arrived in an ambulance or emergency situation."
+        },
+        {
+          value: "anesthetics",
+          label: "Anesthetics",
+          desc: "Doctors in this department give anesthetic for operations and procedures. An anesthetic is a drug or agent that produces a complete or partial loss of feeling. There are three kinds of anesthetic: general, regional and local."
+        },
+        {
+          value: "sizzlejs",
+          label: "Breast Screening",
+          desc: "Screens women for breast cancer and is usually linked to the X-ray or radiology department."
+        },
+        {
+          value: "sizzlejs",
+          label: "Cardiology",
+          desc: "Provides medical care to patients who have problems with their heart or circulation."
+        },
+        {
+          value: "sizzlejs",
+          label: "Chaplaincy",
+          desc: "Chaplains promote the spiritual and pastoral wellbeing of patients, relatives and staff."
+        },
+        {
+          value: "sizzlejs",
+          label: "Critical Care",
+          desc: "Also called intensive care, this department is for seriously ill patients."
+        },
+        {
+          value: "sizzlejs",
+          label: "Diagnostic Imaging",
+          desc: "Also known as X-Ray Department and/or Radiology Department."
+        },
+        {
+          value: "sizzlejs",
+          label: "Elderly services",
+          desc: "Covers and assists with a wide range of issues associated with seniors."
+        },
+        {
+          value: "sizzlejs",
+          label: "Gastroenterology",
+          desc: "This department investigates and treats digestive and upper and lower gastrointestinal diseases."
+        },
+        {
+          value: "sizzlejs",
+          label: "Gynaecology",
+          desc: "Investigates and treats problems relating to the female urinary tract and reproductive organs, such as Endometriosis, infertility and incontinence."
+        },
+        {
+          value: "sizzlejs",
+          label: "Haematology",
+          desc: "These hospital services work with the laboratory. In addition doctors treat blood diseases and malignancies related to the blood."
+        },
+        {
+          value: "sizzlejs",
+          label: "Infection Control",
+          desc: "Primarily responsible for conducting surveillance of hospital-acquired infections and investigating and controlling outbreaks or infection clusters among patients and health care personnel. The department calculates rates of hospital-acquired infections, collates antibiotic susceptibility data, performs analysis of aggregated infection data and provides comparative data to national benchmarks over time."
+        },
+        {
+          value: "maternity",
+          label: "Maternity",
+          desc: "Maternity wards provide antenatal care, delivery of babies and care during childbirth, and postnatal support."
+        },
+        {
+          value: "sizzlejs",
+          label: "Microbiology",
+          desc: "The microbiology department provides an extensive clinical service, including mycology, parasitology, mycobacteriology, a high security pathology unit, and a healthcare associated infection investigation unit, as well as routine bacteriology and an expanding molecular diagnostic repertoire."
+        },
+        {
+          value: "sizzlejs",
+          label: "Neonatal",
+          desc: "Closely linked with the hospital maternity department, provides care and support for babies and their families."
+        },
+        {
+          value: "sizzlejs",
+          label: "Nephrology",
+          desc: "Monitors and assesses patients with various kidney (renal) problems and conditions."
+        },
+        {
+          value: "sizzlejs",
+          label: "Neurology",
+          desc: "A medical specialty dealing with disorders of the nervous system. Specifically, it deals with the diagnosis and treatment of all categories of disease involving the central, peripheral, and autonomic nervous systems, including their coverings, blood vessels, and all effector tissue, such as muscle. Includes the brain, spinal cord, and spinal cord injuries (SCI)."
+        },
+        {
+          value: "sizzlejs",
+          label: "Nutrition and Dietetics",
+          desc: "Dietitians and nutritionists provide specialist advice on diet for hospital wards and outpatient clinics."
+        },
+        {
+          value: "sizzlejs",
+          label: "Obstetrics/Gynaecology",
+          desc: "Specialist nurses, midwives and imaging technicians provide maternity services such as: antenatal and postnatal care, maternal and foetal surveillance, and prenatal diagnosis."
+        },
+        {
+          value: "sizzlejs",
+          label: "Occupational Therapy",
+          desc: "Helps physically or mentally impaired people, including temporary disability, practices in the fields of both healthcare as well as social care. Often abbreviated as 'OT', Occupational Therapy promotes health by enabling people to perform meaningful and purposeful occupations. These include (but are not limited to) work, leisure, self care, domestic and community activities. Occupational therapists work with individuals, families, groups and communities to facilitate health and well-being through engagement or re-engagement in occupation."
+        },
+        {
+          value: "sizzlejs",
+          label: "Oncology",
+          desc: "A branch of medicine that deals with cancer and tumors. A medical professional who practices oncology is an oncologist. The Oncology department provides treatments, including radiotherapy and chemotherapy, for cancerous tumors and blood disorders."
+        },
+        {
+          value: "sizzlejs",
+          label: "Radiology",
+          desc: "The branch or specialty of medicine that deals with the study and application of imaging technology like x-ray and radiation to diagnosing and treating disease. The Department of Radiology is a highly specialized, full-service department which strives to meet all patient and clinician needs in diagnostic imaging and image-guided therapies."
+        },
+        {
+          value: "sizzlejs",
+          label: "Rheumatology",
+          desc: "Rheumatologists care for and treat patients for musculoskeletal disorders such as: bones, joints, ligaments, tendons, muscles and nerves."
+        },
+        {
+          value: "sizzlejs",
+          label: "Sexual Health",
+          desc: "Also known as genitourinary medicine - Provides advice, testing and treatment for sexually transmitted infections, family planning care, pregnancy testing and advice, care and support for sexual and genital problems."
+        },
+        {
+          value: "sizzlejs",
+          label: "Urology",
+          desc: "The urology department is run by consultant urology surgeons and investigates areas linked to kidney and bladder conditions."
+        }
+      ];
+   
+      $( "#searchField" ).autocomplete({
+        minLength: 0,
+        source: results,
+        focus: function( event, ui ) {
+          $( "#searchField" ).val( ui.item.label );
+          return false;
+        },
+        select: function( event, ui ) {
+          $( "#searchField" ).val( ui.item.label );
+          $( "#search-id" ).val( ui.item.value );
+          
+          $( "#search-description" ).html( "<div id='result'><div class='result-details'><h1>" + ui.item.label + "</h1><h4>" + ui.item.desc + "</h4></div><div class='result-image'><img src='./images/map_colored.png' alt='" + ui.item.label + "'></div><a id='btnGuide' href='#' class='btn btn-info active' role='button' aria-pressed='true'><i class='fas fa-map-signs'></i> Guide me there</a></div>");
+   
+          return false;
+        }
+      })
+      .autocomplete( "instance" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+          // .append( "<div>" + item.label + "<br>" + item.desc + "</div>" )
+          .append( "<div>" + item.label + "</div>" )
+          .appendTo( ul );
+      };
+    } );
+    </script>
 
 </head>
 
@@ -22,107 +182,105 @@
 
     <main role="main" class="demo-wrapper">
 
-      <div>
-          
-          <div class="s-page search-page">
-              <h2 class="page-title">Search</h2>
-              <div class="close-button s-close-button">x</div>
-              
-              <form>
-                
-                <span class="input input--makiko">
-                  <input class="input__field input__field--makiko" type="text" id="input-16" />
-                  <label class="input__label input__label--makiko" for="input-16">
-                    <span class="input__label-content input__label-content--makiko">Enter a room or department you need to find.</span>
-                  </label>
-                </span>
+        <div>
 
+            <div class="s-page search-page">
+                <h2 class="page-title">Search</h2>
+                <div class="close-button s-close-button">x</div>
 
-                <button class="btn btn-1 btn-1c">Search</button>
+                    <span class="input input--makiko">
+                      <input class="input__field input__field--makiko" type="text" id="searchField" placeholder="Search for a room or department, just start typing..." />
+                      <label class="input__label input__label--makiko" for="searchField">
+                      </label>
+                    </span>
+
+                    <!-- <button class="btn btn-1 btn-1c">Search</button> -->
+
+                    <br/>
+
+                    <input type="hidden" id="search-id">
+                    <div class="container" id="search-description"></div>
+
+            </div>
+            <div class="s-page login-page">
+                <h2 class="page-title">Login</h2>
+                <h4 class="text-dark">Login for staff (doctors, nurses, service), patients and mangagement...</h4>
+
+                <div class="close-button s-close-button">x</div>
+            </div>
+            <div class="s-page custom-page">
+                <h2 class="page-title">Thank You!</h2>
+                <div class="close-button s-close-button">x</div>
+            </div>
+            <div class="s-page map-page">
+                <h2 class="page-title">Hospital floor map</h2>
+                <div class="close-button s-close-button">x</div>
+
+                <img src="images/map.png" />
+
+            </div>
+            <div class="s-page info-page">
+                <h2 class="page-title">Hospital Information</h2>
+                <h4 class="text-dark">Contacts and stuff...</h4>
+                <div class="close-button s-close-button">x</div>
+            </div>
+
+            <div class="dashboard clearfix">
+                <h1 class="text-center text-light">Hospital Self Service</h1>
                 <br/>
-                <a id="maplink" data-page-type="s-page" data-page-name="map-page" style="color: black; text-decoration: none;">or show floor map</a>
+                <ul class="tiles">
+                    <div class="col1 clearfix">
+                        <li class="tile tile-big tile-5 slideTextUp" data-page-type="s-page" data-page-name="info-page">
+                            <div>
+                                <p><span class="icon-info"></span> Info</p>
+                            </div>
+                            <div>
+                                <p>Get contact information.</p>
+                            </div>
+                        </li>
+                        <li class="tile tile-big tile-4" data-page-type="s-page" data-page-name="map-page">
+                            <figure>
+                                <img src="images/map.png" />
+                                <figcaption class="tile-caption caption-left">Show hospital floor map.</figcaption>
+                            </figure>
+                        </li>
+                    </div>
 
-              </form>
-              
+                    <div class="col2 clearfix">
+                        <li class="tile tile-big tile-5 slideTextUp" data-page-type="s-page" data-page-name="search-page">
+                            <div>
+                                <p><span class="icon-search"></span> Search</p>
+                            </div>
+                            <div>
+                                <p>Search for a room or department.</p>
+                            </div>
+                        </li>
+                    </div>
 
-          </div>
-          <div class="s-page login-page">
-              <h2 class="page-title">Login</h2>
-              <h4 class="text-dark">Login for staff (doctors, nurses, service), patients and mangagement...</h4>
+                    <div class="col3 clearfix">
+                        <li class="tile tile-big tile-5 slideTextUp" data-page-type="s-page" data-page-name="login-page">
+                            <div>
+                                <p><span class="icon-enter"></span> Login</p>
+                            </div>
+                            <div>
+                                <p>Login area for patients and staff.</p>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </div>
 
-              <div class="close-button s-close-button">x</div>
-          </div>
-          <div class="s-page custom-page">
-              <h2 class="page-title">Thank You!</h2>
-              <div class="close-button s-close-button">x</div>
-          </div>
-          <div class="s-page map-page">
-              <h2 class="page-title">Hospital floor map</h2>
-              <div class="close-button s-close-button">x</div>
+            <span id="view-fullscreen"><i class="fas fa-expand-arrows-alt text-secondary"></i></span>
 
-              <img src="images/map.png" />
-
-          </div>
-          <div class="s-page info-page">
-              <h2 class="page-title">Hospital Information</h2>
-              <h4 class="text-dark">Contacts and stuff...</h4>
-              <div class="close-button s-close-button">x</div>
-          </div>
-          <div class="dashboard clearfix">
-              <h1 class="text-center text-light">Hospital Self Service (HSS)</h1>
-              <br/>
-              <ul class="tiles">
-                  <div class="col1 clearfix">
-                      <li class="tile tile-big tile-5 slideTextUp" data-page-type="s-page" data-page-name="search-page">
-                          <div>
-                              <p><span class="icon-search"></span> Search</p>
-                          </div>
-                          <div>
-                              <p>Search for a room in the hospital.</p>
-                          </div>
-                      </li>
-                      <li class="tile tile-big tile-4" data-page-type="s-page" data-page-name="map-page">
-                          <figure>
-                              <img src="images/map.png" />
-                              <figcaption class="tile-caption caption-left">Show hospital floor map.</figcaption>
-                          </figure>
-                      </li>
-                  </div>
-
-                  <div class="col2 clearfix">
-                      <li class="tile tile-big tile-5 slideTextUp" data-page-type="s-page" data-page-name="info-page">
-                          <div>
-                              <p><span class="icon-info"></span> Info</p>
-                          </div>
-                          <div>
-                              <p>Get contact information.</p>
-                          </div>
-                      </li>                   
-                  </div>
-
-                  <div class="col3 clearfix">
-                      <li class="tile tile-big tile-5 slideTextUp" data-page-type="s-page" data-page-name="login-page">
-                          <div>
-                              <p><span class="icon-enter"></span> Login</p>
-                          </div>
-                          <div>
-                              <p>Login area for patients and staff.</p>
-                          </div>
-                      </li>
-                  </div>
-              </ul>
-          </div>
-
-          <span id="view-fullscreen"><i class="fas fa-expand-arrows-alt text-secondary"></i></span>
-
-      </div>
+        </div>
 
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+
+
     <script src="js/scripts.js"></script>
 
     <script src="js/fullscreen.js"></script>

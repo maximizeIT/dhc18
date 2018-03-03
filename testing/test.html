@@ -9,56 +9,7 @@ scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
 vizElement.parentNode.insertBefore(scriptElement, vizElement);
 </script> -->
 
-
-<table id="localinoTable" class="responsive-table highlight">
-<thead>
-  <tr>
-      <th>Time</th>
-      <th>Day</th>
-      <th>X</th>
-      <th>Y</th>
-      <th>Z</th>
-  </tr>
-</thead>
-
-<tbody>
-  <?php
-    $filter_results = $pdo->query($sql_design_algorithmen);
-
-    if($filter_results->rowCount() == 0) {
-        echo '<tr><td>Keine Ergebnisse...</td><td></td></tr>';
-    }
-    else {
-      echo '
-      <tr>
-        <td><strong>Alle Algorithmen auswählen</strong></td>
-        <td class="right">
-          <input type="checkbox" id="selectAllAlgorithmen" />
-          <label for="selectAllAlgorithmen"></label>
-        </td>
-      </tr>';
-
-      foreach ($filter_results as $row) {
-
-        $sql_algorithmen_typen_temp = "SELECT * FROM `d3_typ` WHERE `ID`=".$row['id_d3_typ']."";
-        $algorithmen_typen_temp = $pdo->query($sql_algorithmen_typen_temp);
-
-          foreach ($algorithmen_typen_temp as $typ_row) {
-            echo '<tr>';
-                echo '<td>'.$row['name'].' (<strong>'.$typ_row['typ'].'</strong>)</td>';
-                echo '<td class="right"> 
-                        <p>
-                            <input type="checkbox" name="'.$row['name'].'" id="algorithmus_'.$row['id'].'" />
-                            <label for="algorithmus_'.$row['id'].'"></label>
-                        </p>
-                      </td>
-                      </tr>';
-          
-          }
-      }
-      echo "</tbody>";
-      echo "</table>";
-    }
-  ?>
-</tbody>
-</table>
+<div>
+   <a href="https://plot.ly/~beneha/1/?share_key=mSzEUMzVq67jFKxeXO1TfV" target="_blank" title="WartezeitProFachbereich" style="display: block; text-align: center;"><img src="https://plot.ly/~beneha/1.png?share_key=mSzEUMzVq67jFKxeXO1TfV" alt="WartezeitProFachbereich" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+   <script data-plotly="beneha:1" sharekey-plotly="mSzEUMzVq67jFKxeXO1TfV" src="https://plot.ly/embed.js" async></script>
+</div>
