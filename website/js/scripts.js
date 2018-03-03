@@ -57,13 +57,6 @@
   //when a close button is clicked:
   //close the page
   //wait till the page is closed and fade dashboard back in
-  $('.r-close-button').click(function(){
-      $(this).parent().addClass('slidePageLeft')
-          .one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
-                $(this).removeClass('slidePageLeft').removeClass('openpage');
-              });
-      showDashBoard();
-  });
   $('.s-close-button').click(function(){
       $(this).parent().removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
       showDashBoard();

@@ -1,8 +1,10 @@
-(function () {
+$(document).ready(function () { 
+
     var viewFullScreen = document.getElementById("view-fullscreen");
     
     if (viewFullScreen) {
         viewFullScreen.addEventListener("click", function () {
+            
             var docElm = document.documentElement;
             if (docElm.requestFullscreen) {
                 docElm.requestFullscreen();
@@ -19,4 +21,5 @@
             }
         }, false);
     }
-})();
+
+})
