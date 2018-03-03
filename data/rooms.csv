@@ -1,4 +1,4 @@
-Room_ID;Functiontyp;Capacity;Buliding_area;Balkony;bathroom;Size;station;floor
+Room_ID;Functiontyp;Capacity;Buliding_area;Balkony;bathroom;Size;Station;floor
 A701;patient_room;1;A7.1;0;1;24.24;7;1
 A702;patient_room;1;A7.1;0;1;24.2;7;1
 A703;patient_room;1;A7.1;0;1;24.2;7;1
@@ -77,3 +77,7 @@ A828.3;hall_section;10;A8.2;0;0;5;8;2
 A828.4;hall_section;10;A8.2;0;0;5;8;2
 A828.5;hall_section;10;A8.2;0;0;5;8;2
 A828.6;hall_section;6;A8.2;0;0;3;8;2
+N101;1emergency_reception;1;A3.1;0;0;16;1;0
+N201;2emergency_waiting_room;1;A3.1;0;0;20;1;0
+N401;4emergency_treatment;1;A3.1;0;0;20;1;0
+N301;3emergency_trauma_room;1;A3.1;0;0;20;1;0
