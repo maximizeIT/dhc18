@@ -2,7 +2,7 @@
   "name": "dhc18",
   "version": "1.0.0",
   "description": "Smart Hospital Solutions",
-  "main": "index.js",
+  "main": "/website/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
