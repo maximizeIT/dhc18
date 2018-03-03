@@ -2,20 +2,17 @@
     //get the background-color for each tile and apply it as background color for the cooresponding screen
     $('.tile').each(function(){
         var $this= $(this),
-            page = $this.data('page-name'),
-            bgcolor = $this.css('background-color'),
-            textColor = $this.css('color');
-
-            //if the tile has an image and a caption, we'll use the caption styles
-            if($this.hasClass('fig-tile')) {
-              caption = $this.find('figcaption');
-              bgcolor = caption.css('background-color');
-              textColor = caption.css('color');
-            }
+            page = $this.data('page-name');
 
         $this.on('click',function(){
-          $('.'+page).css({'background-color': bgcolor, 'color': textColor})
-                     .find('.close-button').css({'background-color': textColor, 'color': bgcolor});
+          if(page === 'map-page') {
+            $('.'+page).css({'background-color': 'white', 'color': 'black'})
+                     .find('.close-button').css({'background-color': 'black', 'color': 'white'});
+          }else {
+            $('.'+page).css({'background-color': '#FCC120', 'color': 'white'})
+                     .find('.close-button').css({'background-color': 'black', 'color': 'white'});
+          }
+          
         });
     });
 
@@ -51,6 +48,16 @@
           $('.'+page).addClass('openpage');
           fadeDashBoard();
         }
+    });
+  });
+
+  $('#maplink').each(function(){
+    var $this= $(this);
+  
+    $this.on('click',function(){
+      $('.search-page').removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
+      // fadeDashBoard();
+      $('.map-page').addClass('slidePageInFromLeft').removeClass('slidePageBackLeft');
     });
   });
 
