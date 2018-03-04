@@ -1835,7 +1835,7 @@
      width: 99%;
      margin: 1em auto 
 }
- ::-webkit-scrollbar {
+/*  ::-webkit-scrollbar {
      width: 20px;
 }
  ::-webkit-scrollbar-thumb {
@@ -1843,7 +1843,7 @@
 }
  ::-webkit-scrollbar-track {
      background: #ddd;
-}
+} */
  .r-page {
 /*      width: 100%;
      height: 100%;
@@ -3334,4 +3334,17 @@ label a {
 
 iframe {
      margin: 0 auto !important;
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
 }
