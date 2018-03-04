@@ -2822,6 +2822,19 @@
      margin-top: 60px;
 }
 
+#roomsContainer {
+     margin-top: 60px;
+}
+
+#roomsContainer {
+    color: black;
+}
+
+#customClose {
+    color: white;
+    background-color: black;
+}
+
 #mgmtContainer h1, #patientContainer h1, #staffContainer h1 {
      margin-bottom: 50px;
 }
@@ -3309,4 +3322,16 @@ label a {
 }
 .calendar__task.calendar__task--today {
   color: #fd588a;
+}
+
+.tableauViz {
+     height: 700px !important;
+}
+
+.tableauPlaceholder {
+     /* margin-top: 40px; */
+}
+
+iframe {
+     margin: 0 auto !important;
 }

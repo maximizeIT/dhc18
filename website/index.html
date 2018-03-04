@@ -295,16 +295,16 @@
                     </span>
                     <ul>
                       <li>
-                        <a href='#'>Home</a>
+                        <a>Home</a>
                       </li>
                       <li>
-                        <a href='#'>Equipment</a>
+                        <a>Equipment Utilization</a>
                       </li>
                       <li>
-                        <a href='#'>Rooms</a>
+                        <a id="btnRoomUtil">Room Utilization</a>
                       </li>
                       <li>
-                        <a href='#'>Waiting times</a>
+                        <a>Waiting times</a>
                       </li>
                     </ul>
                   </label>
@@ -315,11 +315,6 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class='tableauPlaceholder' id='viz1520158963275' style='position: relative'><noscript><a href='#'><img alt='Blatt 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;he&#47;heatmap_62&#47;Blatt2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='heatmap_62&#47;Blatt2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;he&#47;heatmap_62&#47;Blatt2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1520158963275');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="logout-button r-logout-button">Logout <i class='fas fa-sign-out-alt'></i></div>
@@ -519,42 +514,61 @@
             </div>
             <div class="r-page staff-page">
 
-                <div class="container-fluid" id="staffContainer">
-
-                    <label>
-                    <input type='checkbox'>
-                    <span class='menu'>
-                      <span class='hamburger'></span>
-                    </span>
-                    <ul>
-                      <li>
-                        <a href='#'>Home</a>
-                      </li>
-                      <li>
-                        <a href='#'>Room &amp; Equipment Search</a>
-                      </li>
-                    </ul>
-                  </label>
+                <div class="container-fluid" id="patientContainer">
 
                     <div class="row">
                         <div class="col-sm">
-                            <h1 class="text-center">Operational Intelligence</h1>
+                            <h1 class="text-center">Staff Self Service</h1>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm">
-                            Fancy graphic 1
-                        </div>
-                        <div class="col-sm">
-                            Fancy graphic 2
+
+                            <span class="input input--makiko">
+                              <input class="input__field input__field--makiko" type="text" id="searchField" placeholder="Search for equipment, rooms, patients or colleagues. Just start typing..." />
+                              <label class="input__label input__label--makiko" for="searchField">
+                              </label>
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="logout-button r-logout-button">Logout <i class='fas fa-sign-out-alt'></i></div>
+                <div class="logout-button-patient r-logout-button">Logout <i class='fas fa-sign-out-alt'></i></div>
 
             </div>
+
+            <div class="r-page room-util-page">
+                <div class="close-button s-close-button">x</div>
+
+                <div class="container-fluid" id="roomsContainer">
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <h1 class="text-center">Rooms Utilization</h1>
+                        </div>
+                    </div>
+
+                    <div class="row" style="background: rgba(245,245,245,.85);margin-top: 20px;">
+                        <div class="col-sm">
+
+                              <h3 class="text-center" style="margin: 20px 0px;">[Heatmap stuff]</h3>
+                                <div class='tableauPlaceholder' id='viz1520161691781' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;he&#47;heatmap_62&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='heatmap_62&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;he&#47;heatmap_62&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1520161691781');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='860px';vizElement.style.maxWidth='1720px';vizElement.style.width='100%';vizElement.style.minHeight='427px';vizElement.style.maxHeight='827px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                        </div>
+                    </div>
+
+                    <div class="row" style="background: rgba(245,245,245,1);">
+                      <div class="col-sm">
+                        
+                      </div>
+                      
+                    </div>
+                </div>
+
+                <div id="customClose" class="close-button r-logout-button">x</div>
+
+            </div>
+
             <div class="s-page map-page">
                 <h2 class="page-title">Hospital floor map</h2>
                 <div class="close-button s-close-button">x</div>
@@ -565,9 +579,12 @@
             <div class="s-page info-page">
                 <h2 class="page-title">Hospital Information</h2>
 
-                <div class="container-fluid text-dark text-left">
+                <div class="container text-dark text-left">
 
-                    <h3>Universitätsklinikum Erlangen</h3>
+                  <div class="row">
+
+                    <div class="col-sm">
+                             <h3>Universitätsklinikum Erlangen</h3>
                     Maximiliansplatz 2
                     <br/>91054 Erlangen
                     <br/>Phone: +49 9131 85-0
@@ -584,6 +601,10 @@
 
                     <br/><br/>
                     <p>Universitätsklinikum Erlangen is a public-law institution capable of holding rights.</p>
+
+                        </div>
+                    
+                  </div>
 
                 </div>
 
