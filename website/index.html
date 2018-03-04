@@ -287,67 +287,272 @@
             <div class="r-page mgmt-page">
 
                 <div class="container-fluid" id="mgmtContainer">
-                  <div class="row">
-                    <div class="col-sm">
-                      <h1 class="text-center">Hospital Intelligence</h1>
-                    </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-sm">
-                      Fancy graphic 1
+                    <label>
+                    <input type='checkbox'>
+                    <span class='menu'>
+                      <span class='hamburger'></span>
+                    </span>
+                    <ul>
+                      <li>
+                        <a href='#'>Home</a>
+                      </li>
+                      <li>
+                        <a href='#'>Equipment</a>
+                      </li>
+                      <li>
+                        <a href='#'>Rooms</a>
+                      </li>
+                      <li>
+                        <a href='#'>Waiting times</a>
+                      </li>
+                    </ul>
+                  </label>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <h1 class="text-center">Hospital Intelligence &amp; Analytics</h1>
+                        </div>
                     </div>
-                    <div class="col-sm">
-                      Fancy graphic 2
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class='tableauPlaceholder' id='viz1520158963275' style='position: relative'><noscript><a href='#'><img alt='Blatt 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;he&#47;heatmap_62&#47;Blatt2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='heatmap_62&#47;Blatt2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;he&#47;heatmap_62&#47;Blatt2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1520158963275');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                        </div>
                     </div>
-                  </div>
                 </div>
 
-                <div class="logout-button r-logout-button"><i class='fas fa-sign-out-alt'></i></div>
+                <div class="logout-button r-logout-button">Logout <i class='fas fa-sign-out-alt'></i></div>
 
             </div>
             <div class="r-page patient-page">
 
                 <div class="container-fluid" id="patientContainer">
-                  <div class="row">
-                    <div class="col-sm">
-                      <h1 class="text-center">Patient Intelligence</h1>
-                    </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-sm">
-                      Fancy graphic 1
+                    <div class="row">
+                        <div class="col-sm">
+                            <h1 class="text-center">Hello <strong>P123</strong>, here are your <u>next appointments</u>:</h1>
+                        </div>
                     </div>
-                    <div class="col-sm">
-                      Fancy graphic 2
+
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <main class="calendar-contain text-left">
+
+                                <aside class="calendar__sidebar">
+
+                                    <h4 class="sidebar__subheading">Today is<br/></h4>
+                                    <h2 class="sidebar__heading">Sunday<br/>March 4<br/>2018</h2>
+
+                                    <h4 class="sidebar__subheading">Next appointments:</h4>
+                                    <ul class="sidebar__list">
+                                        <li class="sidebar__list-item sidebar__list-item">
+                                            <span class="list-item__time">
+                                  <strong>When:</strong>
+                                </span> Sunday at 05.00pm<br/>
+                                            <span class="list-item__time">
+                                  <strong>Where:</strong>
+                                </span> 7/16 <a style="text-decoration: none;" href="#"><i class='fas fa-map-signs'> show on map</i></a><br/>
+                                            <span class="list-item__time">
+                                  <strong>What:</strong>
+                                </span> ECG waiting room
+                                        </li>
+                                        <li class="sidebar__list-item sidebar__list-item">
+                                            <span class="list-item__time">
+                                  <strong>When:</strong>
+                                </span> Sunday at 05.15pm<br/>
+                                            <span class="list-item__time">
+                                  <strong>Where:</strong>
+                                </span> 7/17 <a style="text-decoration: none;" href="#"><i class='fas fa-map-signs'> show on map</i></a><br/>
+                                            <span class="list-item__time">
+                                  <strong>What:</strong>
+                                </span> ECG procedure
+                                        </li>
+                                    </ul>
+
+                                </aside>
+
+
+                                <section class="calendar__days">
+                                    <section class="calendar__top-bar">
+                                        <span class="top-bar__days">Mon</span>
+                                        <span class="top-bar__days">Tue</span>
+                                        <span class="top-bar__days">Wed</span>
+                                        <span class="top-bar__days">Thu</span>
+                                        <span class="top-bar__days">Fri</span>
+                                        <span class="top-bar__days">Sat</span>
+                                        <span class="top-bar__days">Sun</span>
+                                    </section>
+
+                                    <section class="calendar__week">
+                                        <div class="calendar__day inactive">
+                                            <span class="calendar__date">26</span>
+                                        </div>
+                                        <div class="calendar__day inactive">
+                                            <span class="calendar__date">27</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">28</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">1</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">2</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">3</span>
+                                        </div>
+                                        <div class="calendar__day today">
+                                            <span class="calendar__date">4</span>
+                                            <span class="calendar__task calendar__task--today">2 events</span>
+                                        </div>
+                                    </section>
+
+                                    <section class="calendar__week">
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">5</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">6</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">7</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">8</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">9</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">10</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">11</span>
+                                        </div>
+                                    </section>
+
+                                    <section class="calendar__week">
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">12</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">13</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">14</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">15</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">16</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">17</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">18</span>
+                                        </div>
+                                    </section>
+
+                                    <section class="calendar__week">
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">19</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">20</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">21</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">22</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">23</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">24</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">25</span>
+                                        </div>
+                                    </section>
+
+                                    <section class="calendar__week">
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">26</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">27</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">28</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">29</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">30</span>
+                                        </div>
+                                        <div class="calendar__day">
+                                            <span class="calendar__date">31</span>
+                                        </div>
+                                        <div class="calendar__day inactive">
+                                            <span class="calendar__date">1</span>
+                                        </div>
+                                    </section>
+                                </section>
+
+                            </main>
+
+                        </div>
+
                     </div>
-                  </div>
                 </div>
 
-                <div class="logout-button r-logout-button"><i class='fas fa-sign-out-alt'></i></div>
+                <div class="logout-button-patient r-logout-button">Logout <i class='fas fa-sign-out-alt'></i></div>
 
             </div>
             <div class="r-page staff-page">
 
                 <div class="container-fluid" id="staffContainer">
-                  <div class="row">
-                    <div class="col-sm">
-                      <h1 class="text-center">Staff Intelligence</h1>
-                    </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-sm">
-                      Fancy graphic 1
+                    <label>
+                    <input type='checkbox'>
+                    <span class='menu'>
+                      <span class='hamburger'></span>
+                    </span>
+                    <ul>
+                      <li>
+                        <a href='#'>Home</a>
+                      </li>
+                      <li>
+                        <a href='#'>Room &amp; Equipment Search</a>
+                      </li>
+                    </ul>
+                  </label>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <h1 class="text-center">Operational Intelligence</h1>
+                        </div>
                     </div>
-                    <div class="col-sm">
-                      Fancy graphic 2
+
+                    <div class="row">
+                        <div class="col-sm">
+                            Fancy graphic 1
+                        </div>
+                        <div class="col-sm">
+                            Fancy graphic 2
+                        </div>
                     </div>
-                  </div>
                 </div>
 
-                <div class="logout-button r-logout-button"><i class='fas fa-sign-out-alt'></i></div>
+                <div class="logout-button r-logout-button">Logout <i class='fas fa-sign-out-alt'></i></div>
 
             </div>
             <div class="s-page map-page">
