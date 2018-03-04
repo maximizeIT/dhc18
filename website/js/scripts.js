@@ -60,17 +60,47 @@
 
         $this.on('click', function() {
             $('.login-page').removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
-            $('.mgmt-page').removeClass('slidePageBackRight')
-            // fadeDashBoard();
-            $('.mgmt-page').addClass('slidePageInFromRight').removeClass('slidePageBackLeft');
-            $('.mgmt-page').css({
-                    'background-color': 'white',
-                    'color': 'black'
-                })
-                .find('.close-button').css({
-                    'background-color': 'black',
-                    'color': 'white'
-                });
+            
+            var AID = $('#aidField').val();
+
+            if(AID === 'P123') {
+                $('.patient-page').removeClass('slidePageBackRight')
+                $('.patient-page').addClass('slidePageInFromRight').removeClass('slidePageBackLeft');
+                $('.patient-page').css({
+                        'background-color': 'white',
+                        'color': 'black'
+                    })
+                    .find('.close-button').css({
+                        'background-color': 'black',
+                        'color': 'white'
+                    });
+
+            } else if(AID === 'M123') {
+                $('.mgmt-page').removeClass('slidePageBackRight')
+                $('.mgmt-page').addClass('slidePageInFromRight').removeClass('slidePageBackLeft');
+                $('.mgmt-page').css({
+                        'background-color': 'white',
+                        'color': 'black'
+                    })
+                    .find('.close-button').css({
+                        'background-color': 'black',
+                        'color': 'white'
+                    });
+            } else if(AID === 'S123') {
+                $('.staff-page').removeClass('slidePageBackRight')
+                $('.staff-page').addClass('slidePageInFromRight').removeClass('slidePageBackLeft');
+                $('.staff-page').css({
+                        'background-color': 'white',
+                        'color': 'black'
+                    })
+                    .find('.close-button').css({
+                        'background-color': 'black',
+                        'color': 'white'
+                    });
+            } else {
+                // none
+                // show invald message
+            }
         });
     });
 
@@ -83,6 +113,7 @@
 
     $('.r-logout-button').click(function() {
         $(this).parent().removeClass('slidePageInFromRight').addClass('slidePageBackRight');
+        $( "#aidField" ).val('');
         showDashBoard();
     });
 

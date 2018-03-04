@@ -2795,10 +2795,10 @@
      transform: translateY(0px);
 }
 
-#mgmtContainer {
+#mgmtContainer, #patientContainer, #staffContainer {
      margin-top: 60px;
 }
 
-#mgmtContainer h1 {
+#mgmtContainer h1, #patientContainer h1, #staffContainer h1 {
      margin-bottom: 50px;
 }
