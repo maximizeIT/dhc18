@@ -98,30 +98,6 @@ p1 <- zeitdat %>%
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
 ppl <- ggplotly(p1, dynamicTicks = FALSE)
 ggsave(filename = "WartzeiteProFachbereich.png", device = "png", width = 10, height = 7)
-api_create(ppl, filename = "WartezeitProFachbereich")
-
-
-
-ui <- fluidPage(
-  plotlyOutput("plot"),
-  verbatimTextOutput("event")
-)
-server <- function(input, output) {
-  output$plot <- renderPlotly({
-    p1
-  })
-}
-shinyApp(ui, server)
-
-
-
-
-
-
-
-
-
-
 
 #Wartezeit vs. Behandlungszeit
 p2 <- zeitdat %>%
@@ -132,21 +108,23 @@ p2 <- zeitdat %>%
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) +
+  geom_smooth(method = "lm", fill = NA) + scale_color_manual(labels = c("Ear, Nose, Throat department", "Cardiology"), values = c("#2CC0FF", "#FF9D2C"))
 ggsave(filename = "WartezeitBehandlungszeit.png", device = "png", width = 10, height = 7)
-api_create(p2, filename = "WartezeitBehandlungszeit")
 
 #Auslastung über Daten
 p3 <- zeitdat %>%
+  filter(Station != 1) %>%
   drop_na() %>%
+  group_by(Station) %>%
   ggplot(aes(x = tag, y = wartezeit, fill = Station)) + geom_bar(stat = "identity", position = "dodge") +
   labs(x = "Day of month", y = "Waiting time in hours") + ggtitle("Waiting time last month per department") +
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) +
+  scale_fill_manual(labels = c("7", "8"), values = c("#2CC0FF", "#FF9D2C"))
 ggsave(filename = "AuslastungLetzterMonat.png", device = "png", width = 10, height = 7)
-api_create(p3, filename = "AuslastungLetzterMonat")
 
 
 #Geräteauslastung gesamt
@@ -161,7 +139,6 @@ p4 <- zeitdat %>%
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
 ggsave(filename = "GeräteauslastungUltraschallGesamt.png", device = "png", width = 10, height = 7)
-api_create(p4, filename = "GeraeteauslastungUltraschallGesamt")
 
 #Geräteauslastung einzeln
 p5 <- zeitdat %>%
@@ -173,7 +150,6 @@ p5 <- zeitdat %>%
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
 ggsave(filename = "GeräteauslastungUltraschallEinzeln.png", device = "png", width = 10, height = 7)
-api_create(p5, filename = "GeraeteauslastungUltraschallEinzeln")
 
 #Raumbelegung nach Typ
 p6 <- zeitdat %>%
@@ -187,7 +163,6 @@ p6 <- zeitdat %>%
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
 ggsave(filename = "RaumbelegungTyp.png", device = "png", width = 10, height = 7)
-api_create(p6, filename = "RaumbeleungTyp")
 
 #Raumnutzung
 p7 <- zeitdat %>%
@@ -200,7 +175,6 @@ p7 <- zeitdat %>%
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
 ggsave(filename = "Raumnutzung.png", device = "png", width = 10, height = 7)
-api_create(p7, filename = "Raumnutzung")
 
 #Auslastung Notaufnahme
 zeitdat$wartezeit[zeitdat$Functiontyp == "2emergency_waiting_room"] <- zeitdat$dauer[zeitdat$Functiontyp == "2emergency_waiting_room"]
@@ -218,11 +192,16 @@ p8 <- zeitdat %>%
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) +
   scale_x_discrete(labels=c("Reception","Waiting Room","Trauma Room","Treatment Room"))
 ggsave(filename = "Notaufnahme.png", device = "png", width = 10, height = 7)
-api_create(p8, filename = "Notaufnahme")
 
 
-
-
+#Auslastung teure Geräte
+p9 <- zeitdat %>%
+  filter(kategorie == "ct") %>%
+  group_by(geraet, tag) %>%
+  summarize(nutzd = sum(dauer)) %>%
+  mutate(nutzd = nutzd / 8) %>%
+  ggplot(aes(x = tag, y = nutzd, fill = geraet)) + geom_bar(stat = "identity", position = "dodge")
+p9
 
 
 
