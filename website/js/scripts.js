@@ -59,11 +59,11 @@
         var $this = $(this);
 
         $this.on('click', function() {
-            $('.login-page').removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
             
             var AID = $('#aidField').val();
 
             if(AID === 'P123') {
+                $('.login-page').removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
                 $('.patient-page').removeClass('slidePageBackRight')
                 $('.patient-page').addClass('slidePageInFromRight').removeClass('slidePageBackLeft');
                 $('.patient-page').css({
@@ -76,6 +76,7 @@
                     });
 
             } else if(AID === 'M123') {
+                $('.login-page').removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
                 $('.mgmt-page').removeClass('slidePageBackRight')
                 $('.mgmt-page').addClass('slidePageInFromRight').removeClass('slidePageBackLeft');
                 $('.mgmt-page').css({
@@ -87,6 +88,7 @@
                         'color': 'white'
                     });
             } else if(AID === 'S123') {
+                $('.login-page').removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
                 $('.staff-page').removeClass('slidePageBackRight')
                 $('.staff-page').addClass('slidePageInFromRight').removeClass('slidePageBackLeft');
                 $('.staff-page').css({
