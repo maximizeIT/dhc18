@@ -3348,3 +3348,7 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
+
+#customImg {
+     max-height: 75% !important;
+}

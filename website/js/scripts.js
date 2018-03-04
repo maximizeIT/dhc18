@@ -128,6 +128,17 @@
         });
     });
 
+    $('#btnWaitingTimes').each(function() {
+        var $this = $(this);
+
+        $this.on('click', function() {
+
+                // $('.mgmt-page').removeClass('slidePageInFromRight').addClass('slidePageBackRight');
+                // $('.staff-page').removeClass('slidePageBackRight')
+                $('.waiting-page').addClass('slidePageInFromRight').removeClass('slidePageBackRight');
+        });
+    });
+
     $('.s-close-button').click(function() {
         $(this).parent().removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
         $( "#searchField" ).val('');

@@ -304,7 +304,7 @@
                         <a id="btnRoomUtil">Rooms Utilization</a>
                       </li>
                       <li>
-                        <a>Waiting times</a>
+                        <a id="btnWaitingTimes">Waiting times</a>
                       </li>
                     </ul>
                   </label>
@@ -312,6 +312,12 @@
                     <div class="row">
                         <div class="col-sm">
                             <h1 class="text-center">Hospital Intelligence &amp; Analytics</h1>
+                        </div>
+                    </div>
+
+                    <div class="row" style="background: rgba(231, 230, 230, 1);">
+                        <div class="col-sm" style="padding: 0px;">
+                            <img src="images/dashboard.PNG" class="img-fluid" id="customImg">
                         </div>
                     </div>
 
@@ -557,7 +563,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" style="background-color: white;">
                       <div class="col-sm">
 
                         <img src="images/raumnutzung.png" class="img-fluid" style="max-width:60% !important;">
@@ -582,14 +588,12 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" style="background-color: white;">
                         <div class="col-sm">
                             <img src="images/auslastungCT.png" class="img-fluid">
                         </div>
-                    </div>
 
-                    <div class="row">
-                      <div class="col-sm" style="padding:0px;">
+                        <div class="col-sm" style="padding:0px;">
 
                         <!-- <h3 class="text-center" style="margin: 20px 0px;">Utilization Ultrasonic Devices (all)</h3> -->
 
@@ -604,7 +608,44 @@
                         <img src="images/geraeteauslastungUltraschallEinzeln.png" class="img-fluid">
                         
                       </div>
-                      
+                    </div>
+                </div>
+
+                <div id="customClose" class="close-button r-logout-button">x</div>
+
+            </div>
+
+            <div class="r-page waiting-page">
+                <div class="close-button s-close-button">x</div>
+
+                <div class="container-fluid" id="roomsContainer">
+
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-sm">
+                            <h1 class="text-center">Waiting times analysis</h1>
+                        </div>
+                    </div>
+
+                    <div class="row" style="background-color: white;">
+                        <div class="col-sm">
+                            <img src="images/auslastungLetzterMonat.png" class="img-fluid">
+                        </div>
+
+                        <div class="col-sm" style="padding:0px;">
+
+                        <!-- <h3 class="text-center" style="margin: 20px 0px;">Utilization Ultrasonic Devices (all)</h3> -->
+
+                        <img src="images/notaufnahme.png" class="img-fluid">
+                        
+                      </div>
+
+                      <div class="col-sm" style="padding:0px;">
+
+                        <!-- <h3 class="text-center" style="margin: 20px 0px;">Utilization Single Ultrasonic Device</h3> -->
+
+                        <img src="images/wartezeitBehandlungszeit.png" class="img-fluid">
+                        
+                      </div>
                     </div>
                 </div>
 
