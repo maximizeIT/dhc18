@@ -8,6 +8,7 @@ library(shiny)
 library(reshape2)
 library(rsconnect)
 library(loadfonts)
+library(extrafont)
 
 # Data Load ---------------------------------------------------------------
 setwd("C:/Users/bened/dhc18/dhc18/Analyse")
@@ -248,17 +249,6 @@ p9 <- p9 %>%
   guides(fill=guide_legend(title="Device"))
 ggsave(filename = "AuslastungCT.png", device = "png", width = 10, height = 7)
 p9
-
-
-
-
-
-
-
-
-
-
-
 
 
 
