@@ -11,7 +11,7 @@ library(loadfonts)
 
 # Data Load ---------------------------------------------------------------
 setwd("C:/Users/bened/dhc18/dhc18/Analyse")
-zeitdat <- read_excel("testdaten.xlsx") %>%
+zeitdat <- read_excel("analysedaten.xlsx") %>%
   mutate(raum = as.factor(raum)) %>%
   mutate(geraet = as.factor(geraet)) %>%
   mutate(kategorie = as.factor(kategorie)) %>%
@@ -89,18 +89,18 @@ Sys.setenv("plotly_username"="beneha")
 Sys.setenv("plotly_api_key"="F2R1mDfNOwZEC7NIl0Fp")
 loadfonts(device = "win")
 
-#Wartezeit pro Fachbereich
-p1 <- zeitdat %>%
-  drop_na() %>%
-  ggplot(aes(x = Station, y = wartezeit)) + geom_boxplot() +
-  labs(x = "Station", y = "Waiting time in hours") + ggtitle("Distribution waiting time per department") +
-  theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
-  theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
-        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
-        text = element_text(family="Lato"))
-ppl <- ggplotly(p1, dynamicTicks = FALSE)
-ggsave(filename = "WartzeiteProFachbereich.png", device = "png", width = 10, height = 7)
+# #Wartezeit pro Fachbereich
+# p1 <- zeitdat %>%
+#   drop_na() %>%
+#   ggplot(aes(x = Station, y = wartezeit)) + geom_boxplot() +
+#   labs(x = "Station", y = "Waiting time in hours") + ggtitle("Distribution waiting time per department") +
+#   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
+#   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
+#         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
+#         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+#         text = element_text(family="Lato"))
+# ppl <- ggplotly(p1, dynamicTicks = FALSE)
+# ggsave(filename = "WartzeiteProFachbereich.png", device = "png", width = 10, height = 7)
 
 #Wartezeit vs. Behandlungszeit
 p2 <- zeitdat %>%
@@ -167,23 +167,23 @@ p5 %>%
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
         text = element_text(family="Lato")) +
-  scale_fill_manual(labels = c("Arzt", "Ultraschall"), values = c("#2CC0FF", "#FF9D2C"))
+  scale_fill_manual(labels = c("Doctor", "Ultrasonic device"), values = c("#2CC0FF", "#FF9D2C"))
 
 ggsave(filename = "GeräteauslastungUltraschallEinzeln.png", device = "png", width = 10, height = 7)
 
-#Raumbelegung nach Typ
-p6 <- zeitdat %>%
-  group_by(Functiontyp) %>%
-  summarize(hours = sum(dauer)) %>%
-  mutate(hours = hours / 360) %>%
-  ggplot(aes(x = Functiontyp, y = hours)) + geom_bar(stat = "identity")  +
-  labs(x = "Room type", y = "Utilization 08:00 - 20:00") + ggtitle("Utilization of room types last 30 days") +
-  theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
-  theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
-        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
-        text = element_text(family="Lato"))
-ggsave(filename = "RaumbelegungTyp.png", device = "png", width = 10, height = 7)
+# #Raumbelegung nach Typ
+# p6 <- zeitdat %>%
+#   group_by(Functiontyp) %>%
+#   summarize(hours = sum(dauer)) %>%
+#   mutate(hours = hours / 360) %>%
+#   ggplot(aes(x = Functiontyp, y = hours)) + geom_bar(stat = "identity")  +
+#   labs(x = "Room type", y = "Utilization 08:00 - 20:00") + ggtitle("Utilization of room types last 30 days") +
+#   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
+#   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
+#         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
+#         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+#         text = element_text(family="Lato"))
+# ggsave(filename = "RaumbelegungTyp.png", device = "png", width = 10, height = 7)
 
 #Raumnutzung
 p7 <- zeitdat %>%
@@ -201,7 +201,9 @@ p7 %>%
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
         axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
         text = element_text(family="Lato")) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(labels = c("Doctor", "Computer Tomograph", "Electrocardiodiagramm", "Patient", "Nurse", "Ultrasonic device"),
+                    values = c( "#664135", "#2CC0FF", "#407E99", "#05FFC2", "#FF5745", "#CC1836"))
   
 ggsave(filename = "Raumnutzung.png", device = "png", width = 10, height = 7)
 
