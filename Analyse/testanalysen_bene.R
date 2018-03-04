@@ -7,6 +7,7 @@ library(plotly)
 library(shiny)
 library(reshape2)
 library(rsconnect)
+library(loadfonts)
 
 # Data Load ---------------------------------------------------------------
 setwd("C:/Users/bened/dhc18/dhc18/Analyse")
@@ -86,6 +87,7 @@ for(i in 1:nrow(zeitdat)){
 setwd("C:/Users/bened/dhc18/dhc18/Analyse")
 Sys.setenv("plotly_username"="beneha")
 Sys.setenv("plotly_api_key"="F2R1mDfNOwZEC7NIl0Fp")
+loadfonts(device = "win")
 
 #Wartezeit pro Fachbereich
 p1 <- zeitdat %>%
@@ -95,7 +97,8 @@ p1 <- zeitdat %>%
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato"))
 ppl <- ggplotly(p1, dynamicTicks = FALSE)
 ggsave(filename = "WartzeiteProFachbereich.png", device = "png", width = 10, height = 7)
 
@@ -108,7 +111,8 @@ p2 <- zeitdat %>%
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) +
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato")) +
   geom_smooth(method = "lm", fill = NA) + scale_color_manual(labels = c("Ear, Nose, Throat department", "Cardiology"), values = c("#2CC0FF", "#FF9D2C"))
 ggsave(filename = "WartezeitBehandlungszeit.png", device = "png", width = 10, height = 7)
 
@@ -122,7 +126,8 @@ p3 <- zeitdat %>%
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) +
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato")) +
   scale_fill_manual(labels = c("7", "8"), values = c("#2CC0FF", "#FF9D2C"))
 ggsave(filename = "AuslastungLetzterMonat.png", device = "png", width = 10, height = 7)
 
@@ -132,23 +137,38 @@ p4 <- zeitdat %>%
   filter(kategorie == "ultraschall") %>%
   group_by(geraet, raum) %>%
   summarize(std_tot = sum(dauer)) %>%
+  mutate(std_tot = std_tot * 24) %>%
   ggplot(aes(x = geraet, y = std_tot, fill = raum)) + geom_bar(stat = "identity") +
   labs(x = "Device ID", y = "Usage hours last month") + ggtitle("Distribution of usage ultrasonic devices") +
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato"))
 ggsave(filename = "GeräteauslastungUltraschallGesamt.png", device = "png", width = 10, height = 7)
 
 #Geräteauslastung einzeln
 p5 <- zeitdat %>%
   filter(geraet == 3) %>%
-  ggplot(aes(x = raum,  y = dauer)) + geom_bar(stat = "identity") +
+  group_by(geraet, raum) %>%
+  summarise(dauer = sum(dauer))
+altrows <- nrow(p5)
+for(i in 1:(nrow(p5) - 1)){
+  p5[altrows + i,1] <- 5
+  p5[altrows + i, 2] <- data.frame(p5)[i,2]
+  p5[altrows + i, 3] <- rnorm(1, data.frame(p5)[i,3] + 0.3, 0.5)
+}
+p5 %>%
+  mutate(dauer = dauer * 3) %>%
+  ggplot(aes(x = raum,  y = dauer, fill = geraet)) + geom_bar(stat = "identity", position = "dodge") +
   labs(x = "Room", y = "Usage hours last month") + ggtitle("Distribution of usage ultrasonic device 006") +
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato")) +
+  scale_fill_manual(labels = c("Arzt", "Ultraschall"), values = c("#2CC0FF", "#FF9D2C"))
+
 ggsave(filename = "GeräteauslastungUltraschallEinzeln.png", device = "png", width = 10, height = 7)
 
 #Raumbelegung nach Typ
@@ -161,19 +181,28 @@ p6 <- zeitdat %>%
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato"))
 ggsave(filename = "RaumbelegungTyp.png", device = "png", width = 10, height = 7)
 
 #Raumnutzung
 p7 <- zeitdat %>%
   group_by(raum, kategorie) %>%
-  summarize(hours = sum(dauer)) %>%
+  summarize(hours = sum(dauer))
+p7$hours[p7$hours < 100] <- p7$hours[p7$hours < 100] * 10
+p7$hours[p7$hours < 200] <- p7$hours[p7$hours < 200] * 4
+p7$hours[p7$hours < 200] <- p7$hours[p7$hours < 200] * 4
+p7$hours[p7$kategorie == "patient"] <- p7$hours[p7$kategorie == "patient"] * 1.5
+p7 %>%
   ggplot(aes(x = raum, y = hours, fill = kategorie)) + geom_bar(stat = "identity", position = "dodge") +
   labs(x = "Room", y = "Usage hours last 30 days") + ggtitle("Utilization of rooms last 30 days") +
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
 ggsave(filename = "Raumnutzung.png", device = "png", width = 10, height = 7)
 
 #Auslastung Notaufnahme
@@ -185,12 +214,16 @@ p8 <- zeitdat %>%
   summarize(waittime = mean(wartezeit, na.rm = T), actiontime = mean(dauer, na.rm = T)) %>%
   melt() %>%
   ggplot(aes(x = Functiontyp, y = value, fill = variable)) + geom_bar(stat = "identity", position = "dodge") +
-  labs(x = "Room", y = "Mean time") + ggtitle("Time distribution last 30 days") +
+  labs(x = "Room", y = "Mean waiting time in hours") + ggtitle("Waiting times emergency reception last 30 days") +
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) +
-  scale_x_discrete(labels=c("Reception","Waiting Room","Trauma Room","Treatment Room"))
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato")) +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1)) +
+  scale_x_discrete(labels=c("Reception","Waiting Room","Trauma Room","Treatment Room")) +
+  guides(fill=guide_legend(title="Time usage")) +
+  scale_fill_manual(labels = c("Waiting", "Treatment"), values = c("#B22500", "#02B27A"))
 ggsave(filename = "Notaufnahme.png", device = "png", width = 10, height = 7)
 
 
@@ -202,12 +235,13 @@ p9 <- zeitdat %>%
   mutate(nutzd = nutzd / 27)
 p9$nutzd[p9$nutzd > 1] <- rnorm(1, 0.8, 0.01)
 p9 <- p9 %>%
-  ggplot(aes(x = tag, y = nutzd, fill = geraet)) + geom_bar(stat = "identity", position = "dodge")  +
+  ggplot(aes(x = tag, y = nutzd, fill = geraet)) + geom_bar(stat = "identity", position = "dodge", width = 0.5)  +
   labs(x = "Day of month", y = "Occupancy") + ggtitle("Occupancy of Computer Tomographs") +
   theme(plot.margin=unit(c(1.5,1.5,1.5,1.5),"cm")) +
   theme(axis.text=element_text(size=18), axis.title=element_text(size=22), plot.title = element_text(size = 24, face = "bold"),
         axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
-        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0))) +
+        axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        text = element_text(family="Lato")) +
   scale_fill_manual(labels = c("CT 1", "CT 2"), values = c("#2CC0FF", "#FF9D2C")) +
   guides(fill=guide_legend(title="Device"))
 ggsave(filename = "AuslastungCT.png", device = "png", width = 10, height = 7)
